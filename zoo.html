@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <title>My Zoo</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            text-align:center;
+            padding: 20px;
+        }
+
+        #zoo{
+            border: 2px solid blue;
+            padding: 20px;
+            margin: 20px auto;
+            width: 400px;
+        }
+        .zone{
+            border: 1px dashed green;
+            padding: 20px;
+            margin: 10px;
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #status{
+            font-weight: bold;
+            color: green;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>My Zoo</h1>
+    <div id="zoo">
+        <div id="zone1" class="zone">empty zone</div>
+        <div id="zone2" class="zone">empty zone</div>
+        <div id="zone3" class="zone">empty zone</div>
+    </div>
+    <button onclick="openzoo()">open the zoo</button>
+    <h3 id="animalcount"></h3>
+    <p id="status" ></p>
+
+    <script>
+        function openzoo(){
+            document.getElementById("zone1").innerHTML = "lion"
+            document.getElementById("zone2").innerHTML = "tiger"
+            document.getElementById("zone3").innerHTML = "elephant"
+            let totalanimals = 3
+            document.getElementIyId("animalcount").innerHTML = "total animals:" + totalanimals
+            document.getElementById("zoo").style.backgroundColor = "lightgreen"
+            let zooname = document.title
+            document.getElementById("status").innerHTML = "welcome to" + zooname + "! zoo opened successfully"
+        }
+    </script>
+</body>
+</html>
