@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>My Playlist Sorter</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+
+            background: #f4f4f4;
+
+        }
+
+        .card {
+
+            min-height: 300px;
+
+        }
+
+        li {
+
+            font-size: 20px;
+
+            margin: 8px 0;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container mt-4">
+
+        <h2 class="text-center mb-4">My Playlist Sorter</h2>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="card p-3">
+
+                    <h4>Song Names</h4>
+
+                    <ul id="songs"></ul>
+
+                    <button class="btn btn-primary mt-2" onclick="sortAZ()">Sort A-Z</button>
+
+                    <button class="btn btn-warning mt-2" onclick="sortZA()">Sort Z-A</button>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card p-3">
+
+                    <h4>Play Counts</h4>
+
+                    <ul id="plays"></ul>
+
+                    <button class="btn btn-success mt-2" onclick="lowHigh()">Low → High</button>
+
+                    <button class="btn btn-danger mt-2" onclick="highLow()">High → Low</button>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card p-3">
+
+                    <h4>Labels</h4>
+
+                    <ul id="labels"></ul>
+
+                    <button class="btn btn-dark mt-2" onclick="showLabels()">Show Labels</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        let songs = ["beliver" , "thunder" , "perfect" , "closer"];
+    
+        let plays = [250 , 150 , 450 , 300]
+
+        function displaysongs(){
+
+            document.getElementById("songs").innerHTML = " ";
+            
+            songs.forEach(function (song){
+            
+                document.getElementById("playes").innerHTML += `<li>${song}</li>`
+
+            });
+        }
+
+        function sortAZ(){
+
+            songs.sort();
+
+            displaysongs();
+
+        }
+
+        function sortZA(){
+
+            songs.sort();
+
+            songs.reverse();
+
+            displaysongs();
+
+        }
+
+        function lowHigh(){
+
+            plays.sort(function (a , b) {
+
+                return b- a;
+            });
+            
+            displayplays();
+
+        }
+
+        function showLabels(){
+
+            let labels = plays.map(function(play){
+
+                return play + "plays";
+
+            })
+            
+            document.getElementById("labels").innerHTML = "";
+             
+            labels.forEach(function(label){
+
+                document.getElementById("labels").innerHTML += `<li>${label}</li>`
+
+             })
+
+        }
+
+        displaysongs();
+
+        displayplays();
+
+    </script>
+    
+</body>
+
+</html>
