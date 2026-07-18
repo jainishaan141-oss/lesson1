@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Delivery Tracker</title>
+
+    <style>
+        body {
+
+            font-family: Arial;
+
+            text-align: center;
+
+            margin-top: 40px;
+
+        }
+
+        button {
+
+            padding: 10px 20px;
+
+            margin: 10px;
+
+        }
+
+        pre {
+
+            margin-top: 20px;
+
+            font-size: 18px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Delivery Tracker</h2>
+
+    <button onclick="saveOrder()">Save Order</button>
+
+    <button onclick="startDelivery()">Start Delivery</button>
+
+    <pre id="output"></pre>
+
+
+    <script>
+
+        const order = {
+
+            customer: "Rahul",
+
+            item: "Pizza",
+
+            price: 299
+
+        };
+
+        function saveOrder() {
+
+            let json = JSON.stringify(order);
+
+            let obj = JSON.parse(json);
+
+            document.getElementById("output").textContent =
+
+                `Customer: ${obj.customer}
+
+Item: ${obj.item}
+
+Price: ₹${obj.price}`;
+
+        }
+
+        function delay(ms) {
+
+            return new Promise(resolve => setTimeout(resolve, ms));
+
+        }
+
+        async function startDelivery() {
+
+            let out = document.getElementById("output");
+
+            out.textContent = "Order Received";
+
+            await delay(2000);
+
+            out.textContent = "Preparing Order";
+
+            await delay(2000);
+
+            out.textContent = "Out For Delivery";
+
+            await delay(2000);
+
+            out.textContent = "Delivered";
+
+        }
+
+    </script>
+
+</body>
+</html>
