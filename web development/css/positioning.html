@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<head>
+    
+    <title>positioning in html</title>
+    <style>
+        .static{
+            position: static;
+            background-color: brown;
+            padding: 10px;
+            margin: 10px;
+        }
+        .relative{
+            position: relative;
+            background-color: chocolate;
+            padding: 20px;
+            margin: 20px;
+            top: 10px;
+            left: 15px;
+         }
+         .parent{
+            position: relative;
+            background-color: antiquewhite;
+            padding: 10px;
+            margin: 25px;
+         }
+         .absolute{
+              position: absolute;
+              background-color: darkblue;
+              padding: 10px;
+              margin: 10px;
+              top: 15px;
+              left: 10px;
+        
+         }
+         .fixed{
+            position: fixed;
+            background-color: darkslateblue;
+            padding: 10px;
+            margin: 10px;
+            top: 25px;
+            left: 15px;
+         }
+         .sticky{
+            position: sticky;
+            background-color: khaki;
+            padding: 10px;
+            margin: 15px;
+            top: 25px;
+         }
+          
+         ]
+
+    </style>
+</head>
+<body>
+     <div class="static">this is a static position</div>
+
+     <div class="relative">this is a relative position</div>
+
+     <div class="parent">
+        <div class="absolute">this is a absolute position</div>
+     </div>
+
+     <div class="fixed">this is a fixed position</div>
+
+     <div  class="sticky">this is a sticky position</div>
+</body>
+</html>

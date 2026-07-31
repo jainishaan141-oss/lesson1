@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>My Magic Word Lab</title>
+
+    <style>
+        body {
+
+            font-family: Arial;
+
+            background: #f4f4f4;
+
+            padding: 20px;
+
+        }
+
+        .card {
+
+            background: white;
+
+            padding: 20px;
+
+            margin: 20px 0;
+
+            border-radius: 10px;
+
+            box-shadow: 0 0 8px gray;
+
+        }
+
+        input {
+
+            padding: 8px;
+
+            margin: 5px;
+
+            width: 250px;
+
+        }
+
+        button {
+
+            padding: 10px 20px;
+
+            background: #ff6b6b;
+
+            color: white;
+
+            border: none;
+
+            cursor: pointer;
+
+        }
+
+        button:hover {
+
+            background: #ff4040;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>My Magic Word Lab</h1>
+
+    <div class="card">
+
+        <h2>1. Typeof</h2>
+
+        <button onclick="checkTypes()">Check Types</button>
+
+        <p id="typeOutput"></p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>2. Convert Data Types</h2>
+
+        <input type="text" id="convertValue" placeholder="Enter a value">
+
+        <button onclick="convertValue()">Convert</button>
+
+        <p id="convertOutput"></p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>3. Search and Replace</h2>
+
+        <input type="text" id="sentence" placeholder="Sentence"><br><br>
+
+        <input type="text" id="searchWord" placeholder="Search Word"><br><br>
+
+        <input type="text" id="replaceWord" placeholder="Replace With"><br><br>
+
+        <button onclick="replaceText()">Search & Replace</button>
+
+        <p id="replaceOutput"></p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>4. Try Catch</h2>
+
+        <input type="text" id="number" placeholder="Enter Number">
+
+        <button onclick="divide()">Divide</button>
+
+        <p id="errorOutput"></p>
+
+    </div>
+
+    <script>
+
+        function checkTypes() {
+
+            let score = 95;
+
+            let name = "Rahul";
+
+            let gameOver = false;
+
+            document.getElementById("typeOutput").innerHTML =
+
+                "Score Type : " + typeof score + "<br>" +
+
+                "Name Type : " + typeof name + "<br>" +
+
+                "Game Over Type : " + typeof gameOver;
+
+        }
+
+        function convertValue() {
+
+            let value = document.getElementById("convertValue").value;
+
+            let stringValue = String(value);
+
+            let numberValue = Number(value);
+
+            document.getElementById("convertOutput").innerHTML =
+
+                "String : " + stringValue +
+
+                " (" + typeof stringValue + ")" +
+
+                "<br>" +
+
+                "Number : " + numberValue +
+
+                " (" + typeof numberValue + ")";
+
+        }
+
+
+        function replaceText() {
+
+            let sentence = document.getElementById("sentence").value;
+
+            let searchWord = document.getElementById("searchWord").value;
+
+            let replaceWord = document.getElementById("replaceWord").value;
+
+            let position = sentence.search(searchWord);
+
+            let newSentence = sentence.replace(searchWord, replaceWord);
+
+            document.getElementById("replaceOutput").innerHTML =
+
+                "Position : " + position +
+
+                "<br>" +
+
+                "New Sentence : " + newSentence;
+
+        }
+
+        function divide() {
+
+            try {
+
+                let num = Number(document.getElementById("number").value);
+
+                if (isNaN(num))
+
+                    throw "Please enter a valid number.";
+
+                if (num === 0)
+
+                    throw "Division by zero is not allowed.";
+
+                let result = 100 / num;
+
+                document.getElementById("errorOutput").innerHTML =
+
+                    "Result : " + result;
+
+            }
+
+            catch (error) {
+
+                document.getElementById("errorOutput").innerHTML =
+
+                    error;
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
