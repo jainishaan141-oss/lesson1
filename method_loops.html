@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container{
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1{
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .output-box{
+            background-color: #f9f9f9;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: left;
+            border-radius: 4px;
+        }
+        .output-box h3{
+            margin: 0 0 8px 0;
+            color: #34495e;
+            font-size: 16px;
+        }
+        .output-box p{
+            margin: 0;
+            color: #16a085;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+        }
+        button{
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.2s ease;
+        }
+        button:hover{
+            background-color: #2980b9;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>methods and loops in javascript</h1>
+        <div class="output-box">
+            <h3>current date:</h3>
+            <p id="current-date">loading...</p>
+        </div>
+        <div class="output-box">
+            <h3>single rounded random number (0 - 100):</h3>
+            <p id="rounded-number">loading...</p>
+        </div>
+        <div class="output-box">
+            <h3>a random set of numbers (generated via loop):</h3>
+            <p id="loop-numbers">loading...</p>
+        </div>
+        <button onclick="generateProjectData()">generate new values</button>
+    </div>
+
+    <script>
+        function generateProjectData() {
+            const now = new Date();
+            document.getElementById('current-date').innerText = now.toDateString();
+
+            const exactRandom = Math.random() * 100;
+            const roundedRandom = Math.round(exactRandom);
+            document.getElementById('rounded-number').innerText = roundedRandom;
+
+            let numberSet = [];
+            for (let i = 0; i < 5; i++) {
+                let randomNum = Math.floor(Math.random() * 50) + 1;
+                numberSet.push(randomNum);
+            }
+            document.getElementById('loop-numbers').innerText = numberSet.join(', ');
+        }
+        window.onload = generateProjectData;
+    </script>
+
+</body>
+</html>
