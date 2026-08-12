@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: centre;
+        }
+        .container{
+            max-width: 600px;
+            width: 100px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1{
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h2{
+            font-size: 1.1rem;
+            color: #2980b9;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        .output-box{
+            background-color: #ecf0f1;
+            border-left: 5px solid #3498db;
+            padding: 12px;
+            border-radius: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            white-space: pre-wrap;
+            margin-bottom: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <h1>object and array operations</h1>
+        <h2>1. accessing object properties using keys:</h2>
+        <div id="object-output" class="object-box"></div>
+        <h2>2. accessing array items using index values:</h2>
+        <div id="index-output" class="output-box"></div>
+        <h2>3. displaying whole array using .join():</h2>
+        <div id="join-output" class="output-box"></div>
+        <h2>4. removing last item using .pop() and displaying update:</h2>
+        <div id="pop-output" class="output-box"></div>
+    </div>
+
+    <script>
+        const userProfile = {
+            firstName: "john",
+            lastName: "doe",
+            role: "developer",
+            experienceYears: 5,
+        };
+        const codingLanguages = ["HTML", "CSS", "JavaScript", "Python", "SQL"];
+        const objectOutput = 'First item (index 0): ${codingLanguages[0]}\nThird item (Index 2): ${codingLanguages[2]}';
+        document.getElementById('object-output').innerText = objectOutput;
+        const indexOutput = 'First item (index 0): ${codingLanguages[0]}\nThird item (Index 2): ${codingLanguages[2]}';
+        document.getElementById('index-output').innerText = indexOutput;
+        const joinedArray = codingLanguages.join(" ---> ");
+        document.getElementById('join-output').innerText = joinedArray;
+        const removedItem = codingLanguages.pop();
+        const popOutput = 'Removed Item: ${removedItem}\nUpdated Array: [ ${codingLanguages.join(", ")}]';
+        document.getElementById('pop-output').innerText = popOutput;
+        console.log("Object:", userProfile);
+        console.log("Array after pop():", codingLanguages);
+    </script>
+    
+</body>
+</html>
