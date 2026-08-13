@@ -10,14 +10,12 @@ Profile Image
             font-family: 'Open Sans', sans-serif;
             background-color: black;
         }
-
         #container{
             width: 1000px;
             height: 550px;
             background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1631631480669-535cc43f2327?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmFja2dyb3VuZCUyMGltYWdlfGVufDB8fDB8fHww);
             margin: 20px auto;
         }
-
         #claculator{
             width: 320px;
             height: 52px;
@@ -28,11 +26,9 @@ Profile Image
             border-radius: 5px;
             box-shadow: 4px 8px 6px rgba(0,0,0,0.2), 6px 20px 6px rgba(0,0,0,0.19);
         }
-
         #result{
             height: 120px;
         }
-
         #history{
             text-align: right;
             height: 20px;
@@ -41,18 +37,15 @@ Profile Image
             font-size: 15px;
             color: #919191;
         }
-
         #output{
             text-align: right;
             height: 60px;
             margin: 10px 20px;
             font-size: 30px;
         }
-
         #keyboard{
             height: 400px;
         }
-
         .operator, .number, .empty{
             width: 50px;
             height: 50px;
@@ -63,43 +56,34 @@ Profile Image
             font-weight: bold;
             font-size: 15px;
         }
-
         .number, .empty{
             background-color: #eaedef;
         }
-
         .number, .operator{
             cursor: pointer;
         }
-
         .operator:active, .number:active{
             font-size: 13px;
         }
-
         .operator:focus, .number:focus, .empty:focus{
             outline: 0;
         }
-
         button:nth-child(4){
             font-size: 20px;
             background-color: #2eb2aa;
         }
-
         button:nth-child(8){
             font-size: 20px;
             background-color: #ffa500;
         }
-
         button:nth-child(12){
             font-size: 20px;
             background-color: #f08080;
         }
-
         button:nth-child(16){
             font-size: 20px;
             background-color: #7d93e0;
         }
-
         button:nth-child(20){
             font-size: 20px;
             background-color: #9477af;
@@ -143,7 +127,84 @@ Profile Image
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js">
+        function getHistory(){
+            return document.getElementById("history-value").innerText;
+        }
+        function printHistory(num){
+            document.getElementById("history-value").innerText = num; 
+        }
+        function getOutput(){
+            return document.getElementById("output-value").innerText;
+        }
+        function printOutput(num){
+            if(num == ""){
+                return document.getElementById("output-value").innerText = num;
+            }
+            else{
+                return document.getElementById("output-value").innerText = getFormattedNumber(num);
+            }
+        }
+        function getFormattedNumber(num){
+            if(num == "-"){
+                return "";
+            }
+            var n = Number(num);
+            var value = n.toLocalString("en");
+            return value;
+        }
+        function reverseNumberFormat(num){
+            return Number(num.replace(/,/g,''));
+        }
+        var operator = document.getElementsByClassName("operator");
+        for (var i = 0; i < operator.length; i++){
+            operator[i].addEvevtListener('click', function(){
+                if(this.id == "clear"){
+                    printHistory("");
+                    printOutput("");
+                }
+                else if(this.id = "backspace"){
+                    var output = everseNumberFormat(getOutput()).toString();
+                    if(output){
+                        output = output.substr(0,history.length-1);
+                        printOutput(output);
+                    }
+                }
+                else{
+                    var output = getOutput();
+                    var history = getHistory();
+                    if(output == ""&&history!=""){
+                        f(isNaN(history[history.length-1]));
+                    }
+                    if(output != "" || history != ""){
+                        output = output == ""?output:reverseNumberFormat(output);
+                        history = history + output;
+                        if(this.id == "="){
+                            var result = eval(history);
+                            printOutput(result);
+                            printHistory("");
+                        }
+                        else{
+                            history = history + this.id;
+                            printHistory(history);
+                            printOutput("");
+                        }
+                    }
+                }
+               }   );
+        }
+        var number = document.getElementsByClassName("number");
+        for(var i = 0; i < number.length; i++){
+            number[i].addEvevtListener('click', function(){
+                var output = reverseNumberFormat(getOutput());
+                if(output != NaN){
+                    output = output + this.id;
+                    printOutput(output);
+                }
+            });
+        }
+    </script>
+
 </body>
 
 </html>
